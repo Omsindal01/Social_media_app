@@ -2,13 +2,13 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-// import dotenv from "dotenv";
+import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 
 const app = express();
 
-// dotenv.config();
+dotenv.config();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -19,10 +19,10 @@ app.get("/", (req, res) => {
   res.send("APP IS RUNNING!");
 });
 const port = process.env.PORT || 5000;
-const CONNECTION_URL =
-  "mongodb+srv://om_sindal01:dneBDjnFpOLV5OCP@cluster0.9zoz9se.mongodb.net/?retryWrites=true&w=majority";
+// const CONNECTION_URL =
+//   "mongodb+srv://om_sindal01:dneBDjnFpOLV5OCP@cluster0.9zoz9se.mongodb.net/?retryWrites=true&w=majority";
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     // useCreateIndex: true,
     // useFindAndModify: false,
@@ -32,4 +32,4 @@ mongoose
   )
   .catch((err) => console.log(err.message));
 
-// mongoose.set("useFinfAndModify", false);
+// mongoose.set("useFindAndModify", false);

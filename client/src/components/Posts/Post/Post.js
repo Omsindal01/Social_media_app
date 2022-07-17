@@ -37,7 +37,7 @@ export default function Post({ post, setCurrentId }) {
       setLikes([...post.likes, userId]);
     }
   };
-  
+
   const Likes = () => {
     if (likes.length > 0) {
       return hasLikedPost ? (
@@ -108,7 +108,7 @@ export default function Post({ post, setCurrentId }) {
         </Typography>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {post.message}
+            {post.message.substr(0, 100) + "..."}
           </Typography>
         </CardContent>
       </ButtonBase>

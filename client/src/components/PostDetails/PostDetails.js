@@ -4,6 +4,7 @@ import {
   Typography,
   CircularProgress,
   Divider,
+  Grid,
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
@@ -17,7 +18,7 @@ export default function PostDetails() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const { id } = useParams();
-  
+
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
@@ -85,29 +86,37 @@ export default function PostDetails() {
               You might also like:
             </Typography>
             <Divider />
-            <div className={classes.recommendedPosts}>
+            {/* <div className={classes.recommendedPosts}> */}
+            <Grid
+              className={classes.container}
+              container
+              alignItems="stretch"
+              spacing={3}
+            >
               {recommendedPosts.map((post) => (
-                <div
-                  style={{ margin: "20px", cursor: "pointer" }}
-                  key={post._id}
-                  onClick={() => openPost(post._id)}
-                >
-                  <Typography gutterBottom variant="h6">
-                    {post.title}
-                  </Typography>
-                  <Typography gutterBottom variant="subtitle2">
-                    {post.name}
-                  </Typography>
-                  <Typography gutterBottom variant="subtitle2">
-                    {post.message}
-                  </Typography>
-                  <Typography gutterBottom variant="subtitle1">
-                    Likes: {post.likes.length}
-                  </Typography>
-                  <img src={post.selectedFile} width="200px" />
-                </div>
+                <Grid key={post._id} item xs={12} sm={12} md={6} lg={4} xl={3}>
+                  <div
+                    style={{ margin: "20px", cursor: "pointer" }}
+                    key={post._id}
+                    onClick={() => openPost(post._id)}
+                  >
+                    <Typography gutterBottom variant="h6">
+                      {post.title}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle2">
+                      {post.name}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle2">
+                      {post.message.substr(0, 100) + "..."}
+                    </Typography>
+                    <Typography gutterBottom variant="subtitle1">
+                      Likes: {post.likes.length}
+                    </Typography>
+                    <img src={post.selectedFile} width="200px" />
+                  </div>
+                </Grid>
               ))}
-            </div>
+            </Grid>
           </div>
         )}
       </Paper>
