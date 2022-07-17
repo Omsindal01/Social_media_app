@@ -19,17 +19,11 @@ app.get("/", (req, res) => {
   res.send("APP IS RUNNING!");
 });
 const port = process.env.PORT || 5000;
-// const CONNECTION_URL =
-//   "mongodb+srv://om_sindal01:dneBDjnFpOLV5OCP@cluster0.9zoz9se.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
-    // useCreateIndex: true,
-    // useFindAndModify: false,
   })
   .then(() =>
     app.listen(port, () => console.log(`server running on port ${port}`))
   )
   .catch((err) => console.log(err.message));
-
-// mongoose.set("useFindAndModify", false);
