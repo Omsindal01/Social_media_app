@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseUrl: "https://socila-media-app-mern-stack.herokuapp.com",
+  baseUrl: "http://localhost:5000/",
 });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile"))
