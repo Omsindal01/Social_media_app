@@ -118,7 +118,7 @@ export default function Auth() {
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
           <GoogleLogin
-            clientId="173915810391-20holsuislkn92r3q1no5vb06pdc6hi6.apps.googleusercontent.com"
+            clientId="1066136036198-gurh1fnl8njvcs58bfpgq9jvh00vpssh.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}
